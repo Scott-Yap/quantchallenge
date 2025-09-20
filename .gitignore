@@ -1,2 +1,3 @@
 .competition
 .venv
+**/catboost_info/
