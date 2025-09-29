@@ -9,13 +9,10 @@ Given 17 columns of training data (`time`, `A-N`, `Y1`, `Y2`) and 15 columns of 
 - **Goal:** Train a model on the training data and predict values (`Y1`, `Y2`) for the test data.  
 - **Metric:** Achieve the highest possible \( R^2 \), defined as:  
 
-\[
-R^2 = 1 - \frac{SS_{\text{res}}}{SS_{\text{tot}}}
-\]
+R^2 = 1 - (SS_res / SS_tot)
+SS_res = Σ(y_i - ŷ_i)^2
+SS_tot = Σ(y_i - ȳ)^2
 
-\[
-SS_{\text{res}} = \sum (y_i - \hat{y}_i)^2, \quad SS_{\text{tot}} = \sum (y_i - \bar{y})^2
-\]
 
 ---
 
