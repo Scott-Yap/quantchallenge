@@ -8,6 +8,6 @@
 - Implemented inefficiency capture strategy for late-game pricing differences
 
 # Credit to Team
--Scott-Yap
--newtonianton
+- Scott-Yap
+- newtonianton
 -
