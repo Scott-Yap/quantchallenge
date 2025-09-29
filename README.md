@@ -6,9 +6,13 @@ https://quantchallenge.org/
 
 # Trading round
 - Implemented Avellaneda-Stoikov model, parameters need adjusting in testing environment
-- Developed a late-game inefficiency capture strategy, targeting predictable pricing discrepanciwa near market close
+- Developed a late-game inefficiency capture strategy, targeting predictable pricing discrepancies near market close
 
 # Credit to Team
 - https://www.linkedin.com/in/scott-yap/
 - https://www.linkedin.com/in/nathan-tan-a7368b1b8/
 - https://www.linkedin.com/in/aaronslchong/
+
+
+
+
