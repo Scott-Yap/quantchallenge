@@ -30,6 +30,8 @@ class Strategy
   // We only keep top-of-book for reference pricing.
   std::vector<std::pair<float, float>> local_bids; // best bid at [0]
   std::vector<std::pair<float, float>> local_asks; // best ask at [0]
+  std::vector<std::pair<float, float>> full_bids;
+  std::vector<std::pair<float, float>> full_asks;
   std::mutex mu_;
 
 public:
@@ -44,10 +46,10 @@ public:
 
   Strategy() { reset_state(); }
 
-  void on_trade_update(Ticker /*ticker*/, Side /*side*/, float /*quantity*/, float /*price*/) {}
+  void on_trade_update(Ticker ticker, Side side, float quantity, float price) {}
 
   // Always reflect the latest tick as top-of-book for that side.
-  void on_orderbook_update(Ticker /*ticker*/, Side side, float quantity, float price)
+  void on_orderbook_update(Ticker ticker, Side side, float quantity, float price)
   {
     std::lock_guard<std::mutex> g(mu_);
     auto &book = (side == Side::buy) ? local_bids : local_asks;
@@ -74,11 +76,11 @@ public:
     }
   }
 
-  void on_account_update(Ticker /*ticker*/, Side /*side*/, float /*price*/, float /*quantity*/, float /*capital_remaining*/) {}
+  void on_account_update(Ticker ticker, Side side, float price, float quantity, float capital_remaining) {}
 
   // Normalize snapshots to true best bid/ask (store only best-of-book).
   virtual void on_orderbook_snapshot(
-      Ticker /*ticker*/,
+      Ticker ticker,
       const std::vector<std::pair<float, float>> &bids,
       const std::vector<std::pair<float, float>> &asks)
   {
@@ -157,7 +159,7 @@ public:
 
     Side side = (diff_signed > 0) ? Side::buy : Side::sell;
 
-    // Use absolute gap for sizing decisions, keep sign in `side`.
+    // Use absolute gap for sizing decisions, keep sign in side.
     int diff = std::abs(diff_signed);
 
     float qty_notional = 0.0f;
