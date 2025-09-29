@@ -1,5 +1,5 @@
-# QuantChallenge 2025
-# Overall Rank: #11 out of 1417
+# QuantChallenge 2025 Overall Rank: #11 out of 1417
+https://quantchallenge.org/
  
 # Research round
 - Built a stacked ensemble model combining CatBoost and XGBoost, blended using Ridge regression
